@@ -18,5 +18,14 @@ verbose: Toggle whether the data generator prints information or not.
 
 
 
+```python
+d = dataGenerator(folder, im_size)
+d.get_batch(num)
+```
+
+num: Number of images to return
+
+Get batch selects random images from the currently loaded segment, and counts the number of images sampled so that it can load a new segment when enough images have been sampled.
+
 
 Feel free to steal this code for your own projects, and feel free to optimize it however you see fit!
