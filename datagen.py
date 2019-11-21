@@ -88,9 +88,6 @@ class dataGenerator(object):
             temp = np.array(temp, dtype='uint8')
             segment.append(temp)
             kn = kn + 1
-            if self.flip:
-                segment.append(np.flip(temp, 1))
-                kn = kn + 1
 
             if kn >= self.segment_length:
                 np.save("data/" + folder + "-npy-" + str(self.im_size) + "/data-"+str(sn)+".npy", np.array(segment))
@@ -134,5 +131,8 @@ class dataGenerator(object):
 
         for i in idx:
             out.append(self.images[i])
+            if self.flip and random.random() < 0.5:
+                out[-1] = np.flip(out[-1], 1)
 
         return np.array(out).astype('float32') / 255.0
+
